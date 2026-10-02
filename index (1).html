@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Varun Gopal — Python Backend Engineer | Django, DRF, MySQL</title>
+  <meta name="description" content="Varun Gopal is a Python backend engineer with 4 years of experience building Django REST Framework APIs, optimising MySQL, and delivering secure healthcare technology systems. Based in Ernakulam, Kerala. Immediate joiner." />
+  <meta property="og:title" content="Varun Gopal — Python Backend Engineer" />
+  <meta property="og:description" content="Django / Django REST Framework / MySQL backend engineer. 4 years at Equipo Health. Ernakulam, Kerala. Immediate joiner." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <style>
+:root{
+  --bg:#0b1220; --bg-alt:#0f172a; --card:#111c33; --card-2:#16233f;
+  --border:#22345e; --text:#e6edf7; --muted:#9fb0c9; --faint:#6b7f9e;
+  --green:#22c55e; --orange:#f59e0b; --blue:#38bdf8; --accent:#7dd3fc;
+  --radius:14px; --max:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:#0a1428;border:1px solid var(--border);border-radius:6px;padding:.08em .35em}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:700}
+.brand:hover{text-decoration:none}
+.brand-mark{background:linear-gradient(135deg,#0ea5e9,#22c55e);color:#04121f;width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-size:.85rem}
+.brand-dot{color:var(--green)}
+.site-nav{display:flex;gap:22px;align-items:center}
+.site-nav a{color:var(--muted);font-size:.95rem}
+.site-nav a:hover,.site-nav a.active{color:var(--text);text-decoration:none}
+.nav-cta{border:1px solid var(--border);padding:7px 14px;border-radius:999px;color:var(--text)!important;background:var(--card)}
+.nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:8px;width:42px;height:42px;cursor:pointer}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--text);margin:4px auto}
+
+/* Hero */
+.hero{padding:56px 0 40px;background:radial-gradient(900px 400px at 20% -10%,rgba(56,189,248,.16),transparent),radial-gradient(700px 300px at 90% 0%,rgba(34,197,94,.12),transparent)}
+.endpoint-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 12px;margin-bottom:34px}
+.endpoint-path{background:none;border:none;padding:0;color:var(--text)}
+.status-pill{margin-left:auto;color:var(--muted);font-size:.85rem;display:flex;align-items:center;gap:7px}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(34,197,94,.15)}
+.method{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;font-size:.78rem;letter-spacing:.04em;padding:4px 9px;border-radius:6px;color:#04121f}
+.method-get{background:var(--green)} .method-post{background:var(--orange)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:28px;align-items:start}
+.eyebrow{color:var(--green);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;margin:0 0 8px}
+h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;margin:0}
+.hero-subtitle{font-size:clamp(1.05rem,2.5vw,1.35rem);color:var(--accent);margin:10px 0 16px;font-weight:600}
+.hero-summary{color:var(--muted);max-width:56ch;margin:0 0 24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.btn{display:inline-block;padding:11px 18px;border-radius:999px;font-weight:600;border:1px solid transparent}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#04180c}
+.btn-secondary{background:var(--card-2);color:var(--text);border-color:var(--border)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+.hero-meta{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hero-meta li{background:rgba(17,28,51,.7);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.hero-meta strong{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:3px}
+.hero-meta span{font-size:.95rem}
+.code-card{background:#081120;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.code-card-header{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);color:var(--muted);font-size:.85rem}
+.code-dots{display:flex;gap:6px}.code-dots i{width:10px;height:10px;border-radius:50%;background:#334155;display:block}.code-dots i:first-child{background:#ef4444}.code-dots i:nth-child(2){background:#f59e0b}.code-dots i:nth-child(3){background:#22c55e}
+.copy-btn{margin-left:auto;background:var(--card-2);color:var(--text);border:1px solid var(--border);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:.82rem}
+.copy-btn:hover{border-color:var(--accent)}
+.code-block{margin:0;padding:18px;overflow:auto;font-size:.88rem;line-height:1.55}
+.code-block code{background:none;border:none;padding:0;color:#c9e7d4}
+
+/* Sections */
+.section{padding:56px 0}
+.section-alt{background:var(--bg-alt)}
+.section-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.section-head h2{margin:0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.35rem}
+.section-tools{margin-left:auto}
+.skill-filter{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:999px;padding:9px 14px;min-width:230px}
+.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:start}
+.prose{color:var(--muted)} .prose p{margin-top:0}
+.prose-lead{color:var(--muted);font-size:1.05rem}
+.info-card,.skill-card,.project-card,.experience-card,.contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+.info-card h3,.skill-card h3,.contact-form h3{margin-top:0}
+.fact-list{margin:0}.fact-list div{padding:10px 0;border-top:1px solid var(--border)}.fact-list div:first-child{border-top:none;padding-top:0}
+.fact-list dt{color:var(--faint);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.fact-list dd{margin:3px 0 0}
+.skills-grid,.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.projects-grid{grid-template-columns:repeat(2,1fr)}
+.tag-list{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.tag-list li{background:#0a1a30;border:1px solid var(--border);color:#cfe3ff;border-radius:999px;padding:5px 10px;font-size:.84rem}
+.tag-list-muted li{color:var(--muted)}
+.card-note{color:var(--muted);font-size:.9rem}
+.empty-state{color:var(--muted)}
+.experience-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:16px}
+.experience-head h3{margin:0;font-size:1.25rem}
+.company{color:var(--accent);margin:4px 0 0}
+.date-range{color:var(--muted);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;margin:4px 0 0}
+.bullet-list{color:var(--muted);padding-left:20px}.bullet-list li{margin-bottom:10px}
+.bullet-list-compact li{margin-bottom:6px}
+.project-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.project-top code{color:var(--muted)}
+.project-card h3{margin:0 0 4px;font-size:1.2rem}
+.project-subtitle{color:var(--accent);margin:0 0 12px;font-size:.92rem}
+.project-card p{color:var(--muted)}
+.project-links{margin-bottom:0}
+.plain-list{color:var(--muted);padding-left:20px}.plain-list li{margin-bottom:8px}
+.credential-title{font-weight:700;color:var(--text);margin-bottom:4px}
+.contact-list{list-style:none;padding:0;margin:20px 0}
+.contact-list li{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--border)}
+.contact-list span{width:90px;color:var(--faint);font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+.copy-feedback{color:var(--green);min-height:1.4em}
+.contact-form label{display:block;margin-bottom:14px;color:var(--muted);font-size:.92rem}
+.contact-form input,.contact-form textarea{width:100%;margin-top:6px;background:#0a1428;border:1px solid var(--border);border-radius:9px;color:var(--text);padding:11px 12px;font:inherit}
+.form-note{color:var(--faint);font-size:.88rem}
+.site-footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted)}
+.footer-inner{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;justify-content:space-between}
+.footer-inner p{margin:0}.footer-note{color:var(--faint);font-size:.88rem}
+
+@media (max-width:900px){
+  .hero-grid,.two-col{grid-template-columns:1fr}
+  .skills-grid,.projects-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .skills-grid,.projects-grid,.hero-meta{grid-template-columns:1fr}
+  .nav-toggle{display:block}
+  .site-nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg-alt);border-bottom:1px solid var(--border);padding:16px 20px;flex-direction:column;align-items:flex-start}
+  .site-nav.open{display:flex}
+  .status-pill{margin-left:0}
+  .section-tools{margin-left:0;width:100%}.skill-filter{width:100%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Varun Gopal home">
+        <span class="brand-mark">VG</span>
+        <span class="brand-text">varun<span class="brand-dot">.</span>gopal</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary">
+        <a href="#profile">Profile</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO / GET /profile -->
+    <section class="hero">
+      <div class="container">
+        <div class="endpoint-bar" aria-label="API endpoint">
+          <span class="method method-get">GET</span>
+          <code class="endpoint-path">/profile</code>
+          <span class="status-pill"><span class="status-dot"></span>200 OK · Immediate joiner</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Python Backend Engineer</p>
+            <h1>Varun Gopal</h1>
+            <p class="hero-subtitle">Django · Django REST Framework · MySQL</p>
+            <p class="hero-summary">
+              Backend engineer with 4 years of experience building production REST APIs,
+              optimising MySQL workloads, and integrating third-party services in healthcare
+              technology. I work on query performance, secure multi-tenant APIs, and
+              asynchronous data flows — and I care about systems that are observable
+              and defensible in production.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#experience">View experience</a>
+              <a class="btn btn-secondary" href="assets/resume/Varun_Gopal_Resume.pdf" download>Download résumé</a>
+              <a class="btn btn-ghost" href="#contact">Contact me</a>
+            </div>
+
+            <ul class="hero-meta" aria-label="Key facts">
+              <li><strong>Location</strong><span>Ernakulam, Kerala</span></li>
+              <li><strong>Experience</strong><span>4 years</span></li>
+              <li><strong>Most recent role</strong><span>Senior Software Engineer, Equipo Health</span></li>
+              <li><strong>Availability</strong><span>Immediate joiner · Remote / in-office / relocation</span></li>
+            </ul>
+          </div>
+
+          <aside class="code-card" aria-label="Profile as JSON response">
+            <div class="code-card-header">
+              <span class="code-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>Response · application/json</span>
+              <button class="copy-btn" id="copyProfileBtn" type="button">Copy</button>
+            </div>
+            <pre class="code-block" id="profileJson"><code>{
+  "name": "Varun Gopal",
+  "title": "Python Backend Engineer",
+  "stack": ["Python", "Django", "DRF", "MySQL"],
+  "location": "Ernakulam, Kerala",
+  "experience_years": 4,
+  "last_role": "Senior Software Engineer @ Equipo Health",
+  "availability": "Immediate joiner",
+  "open_to": ["Kerala", "Coimbatore / Tamil Nadu",
+              "Bengaluru", "Remote"]
+}</code></pre>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="section" id="profile">
+      <div class="container">
+        <div class="section-head">
+          <span class="method method-get">GET</span>
+          <h2>/about</h2>
+        </div>
+        <div class="two-col">
+          <div class="prose">
+            <p>
+              I spent four years at Equipo Health Inc. (June 2022 – July 2026) building and
+              maintaining Django REST Framework services inside a microservices architecture —
+              patient records, referrals, e-consultations, and clinical reporting, operating
+              across millions of database rows.
+            </p>
+            <p>
+              My strongest work is at the database boundary: EXPLAIN-driven query tuning,
+              composite and covering indexes, and moving heavy reporting aggregations into
+              MySQL stored procedures. Alongside that, I have built JWT authentication
+              middleware, multi-tenant access controls, secure S3 document flows, and
+              queue-based synchronisation with external care-management systems.
+            </p>
+            <p>
+              I am currently looking for backend roles in Django / Python API development
+              or SQL-heavy engineering, and building on that foundation with agentic AI
+              engineering — agents, tools, and APIs — through Google ADK projects.
+            </p>
+          </div>
+          <div class="info-card">
+            <h3>At a glance</h3>
+            <dl class="fact-list">
+              <div><dt>Based in</dt><dd>Ernakulam, Kerala (native of Piravom)</dd></div>
+              <div><dt>Preferred locations</dt><dd>Kerala · Coimbatore & nearby TN districts · Bengaluru</dd></div>
+              <div><dt>Languages</dt><dd>English · Malayalam · Tamil</dd></div>
+              <div><dt>Education</dt><dd>B.E. Computer Science, SNS College of Engineering, Anna University (2014–2018)</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-head">
+          <span class="method method-get">GET</span>
+          <h2>/skills</h2>
+          <div class="section-tools">
+            <label class="visually-hidden" for="skillFilter">Filter skills</label>
+            <input id="skillFilter" class="skill-filter" type="search" placeholder="Filter skills… e.g. MySQL" />
+          </div>
+        </div>
+
+        <div class="skills-grid" id="skillsGrid">
+          <article class="skill-card" data-skills="python django django rest framework drf flask rest api microservices">
+            <h3>Languages &amp; Backend</h3>
+            <ul class="tag-list">
+              <li>Python</li><li>Django</li><li>Django REST Framework</li><li>Flask</li>
+              <li>REST API design</li><li>Microservices</li><li>JavaScript (basics)</li>
+            </ul>
+          </article>
+
+          <article class="skill-card" data-skills="mysql sql stored procedures functions indexing explain query optimisation chromadb aws s3">
+            <h3>Databases &amp; Storage</h3>
+            <ul class="tag-list">
+              <li>MySQL</li><li>SQL</li><li>Stored procedures &amp; functions</li>
+              <li>Indexing &amp; EXPLAIN analysis</li><li>Query optimisation</li>
+              <li>ChromaDB</li><li>AWS S3</li>
+            </ul>
+          </article>
+
+          <article class="skill-card" data-skills="aws lambda cloudwatch docker jenkins ci cd git linux cron blue-green jira">
+            <h3>Cloud, DevOps &amp; Tools</h3>
+            <ul class="tag-list">
+              <li>AWS Lambda</li><li>AWS CloudWatch</li><li>Docker</li>
+              <li>Jenkins CI/CD</li><li>Blue-green deployment</li><li>Git</li>
+              <li>Linux</li><li>Cron jobs</li><li>Jira</li>
+            </ul>
+          </article>
+
+          <article class="skill-card" data-skills="jwt authentication role-based access control multi-tenant pytest postman swagger api security">
+            <h3>Security, Testing &amp; API Tools</h3>
+            <ul class="tag-list">
+              <li>JWT authentication</li><li>Role-based access control</li>
+              <li>Multi-tenant architecture</li><li>Pytest</li><li>Postman</li><li>Swagger</li>
+            </ul>
+          </article>
+
+          <article class="skill-card" data-skills="google adk gemini api fastmcp mcp rag pydantic multi-agent orchestration agentic ai">
+            <h3>AI &amp; Agentic Systems</h3>
+            <ul class="tag-list">
+              <li>Google ADK</li><li>Gemini API</li><li>FastMCP</li>
+              <li>Multi-agent orchestration</li><li>Custom function tools</li>
+              <li>Pydantic structured outputs</li><li>RAG (foundations)</li>
+            </ul>
+            <p class="card-note">Engineering side of AI — agents, tools, APIs and deployment. Coursework and self-directed projects; no production agentic-AI deployments yet.</p>
+          </article>
+
+          <article class="skill-card" data-skills="agile scrum collaboration code review">
+            <h3>Ways of Working</h3>
+            <ul class="tag-list">
+              <li>Agile / Scrum</li><li>Cross-team collaboration</li>
+              <li>DevOps &amp; frontend collaboration</li><li>Production support &amp; tracing</li>
+            </ul>
+          </article>
+        </div>
+        <p class="empty-state" id="skillsEmpty" hidden>No skills match that filter.</p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <span class="method method-get">GET</span>
+          <h2>/experience</h2>
+        </div>
+
+        <article class="experience-card">
+          <header class="experience-head">
+            <div>
+              <h3>Senior Software Engineer</h3>
+              <p class="company">Equipo Health Inc. · Trivandrum, Kerala</p>
+            </div>
+            <p class="date-range">June 2022 — July 2026</p>
+          </header>
+
+          <ul class="bullet-list">
+            <li>Built and maintained Django REST Framework APIs for patient records, referrals, e-consultations, and clinical reporting within a microservices architecture, operating across millions of database rows and engineered toward sub-100&nbsp;ms response targets.</li>
+            <li>Led MySQL performance tuning on high-traffic endpoints using EXPLAIN analysis, composite and covering indexes, and query rewrites — eliminating full table scans and filesorts, and moving complex reporting aggregations into stored procedures.</li>
+            <li>Implemented JWT middleware and role-based permission checks with local token verification, avoiding per-request database lookups; enforced multi-tenant isolation by scoping queries to the group/facility encoded in the token.</li>
+            <li>Developed secure clinical document workflows: file validation, private AWS S3 storage, MySQL metadata, and short-lived pre-signed URLs protected by patient-level authorisation checks.</li>
+            <li>Designed asynchronous, queue-based synchronisation between the core platform and an external care-management system, with event triggers, idempotent upserts keyed by unique event ID, duplicate prevention, and conflict-resolution rules.</li>
+            <li>Built scheduling and eligibility logic for appointment reminders, medication nudges, and follow-ups delivered via the Telnyx API (SMS, IVR, email), with timezone-aware delivery windows and database-level status locks to prevent duplicate sends.</li>
+            <li>Delivered APIs for a React-based operations control panel (facility configuration, referral routing, user permissions) with server-side pagination, filtering, and <code>select_related</code> optimisations to prevent N+1 queries.</li>
+            <li>Improved production traceability with Django middleware generating request IDs and structured JSON logs for AWS CloudWatch Logs Insights; built scheduled Python batch jobs and contributed to Docker, Jenkins CI/CD, and blue-green deployment workflows.</li>
+          </ul>
+
+          <ul class="tag-list tag-list-muted" aria-label="Technologies used">
+            <li>Django REST Framework</li><li>MySQL</li><li>AWS Lambda / S3 / CloudWatch</li>
+            <li>Docker</li><li>Jenkins</li><li>JWT</li><li>Telnyx API</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section section-alt" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <span class="method method-get">GET</span>
+          <h2>/projects</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <span class="method method-post">POST</span>
+              <code>/projects/civicpulse-ai</code>
+            </div>
+            <h3>CivicPulse AI</h3>
+            <p class="project-subtitle">Multi-agent civic grievance &amp; escalation system · Self-directed project</p>
+            <p>
+              A municipal grievance platform where a Google ADK coordinator agent routes citizen
+              requests to specialist Triage, Knowledge, and Escalation agents. Domain actions stay
+              deterministic: a FastMCP tool server exposes raw-SQL-backed tools for complaint filing,
+              SLA-breach checks, and geospatial duplicate detection (bounding-box pre-filter plus a
+              custom haversine calculation), so SLA maths is never left to LLM inference.
+            </p>
+            <ul class="bullet-list bullet-list-compact">
+              <li>Configurable SLA rules by category and priority, with fallback behaviour.</li>
+              <li>RAG over the grievance charter with ChromaDB and Gemini embeddings for grounded, citation-backed answers.</li>
+              <li>Before-model prompt filtering and before-tool audit logging; Django REST views bridged to ADK's async Runner via a background asyncio event loop.</li>
+            </ul>
+            <ul class="tag-list">
+              <li>Google ADK</li><li>FastMCP</li><li>Django REST</li><li>MySQL</li><li>ChromaDB</li><li>Gemini API</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <span class="method method-post">POST</span>
+              <code>/projects/ats-resume-score</code>
+            </div>
+            <h3>ATS Resume Score</h3>
+            <p class="project-subtitle">Free ATS résumé scan with a deterministic scoring engine · Live project</p>
+            <p>
+              A utility web app that scans a résumé against 14 deterministic checks (regex and word
+              lists, no ML) across parseability, contact &amp; structure, content quality, and
+              job-description match. Built with Django and MySQL, deployed on Render, and tested
+              against real-world résumés to harden its PDF parsing.
+            </p>
+            <ul class="bullet-list bullet-list-compact">
+              <li>Free scan with a clear score breakdown; deeper report features designed as the paid tier.</li>
+              <li>Production hardening: environment-based settings, WhiteNoise, Docker, and health-check-safe deployment.</li>
+            </ul>
+            <ul class="tag-list">
+              <li>Django</li><li>MySQL</li><li>Docker</li><li>Render</li>
+            </ul>
+            <p class="project-links">
+              <a href="https://ats-resume-score-835x.onrender.com" target="_blank" rel="noopener">Live site ↗</a>
+            </p>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <span class="method method-get">GET</span>
+              <code>/projects/adk-coursework</code>
+            </div>
+            <h3>Google Skills Coursework — Agentic AI</h3>
+            <p class="project-subtitle">Agent Development Kit &amp; tool integration training</p>
+            <p>
+              Hands-on coursework building agents with structured Pydantic outputs, session-state
+              templating, custom function tools, Google Search grounding, and code execution tools —
+              configured both programmatically in Python and through declarative YAML.
+            </p>
+            <ul class="tag-list">
+              <li>Google ADK</li><li>Gemini API</li><li>Pydantic</li><li>Python</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="section" id="credentials">
+      <div class="container">
+        <div class="section-head">
+          <span class="method method-get">GET</span>
+          <h2>/credentials</h2>
+        </div>
+
+        <div class="two-col">
+          <div class="info-card">
+            <h3>Education</h3>
+            <p class="credential-title">B.E. Computer Science and Engineering</p>
+            <p>SNS College of Engineering, Anna University<br />Coimbatore, Tamil Nadu · 2014 – 2018</p>
+          </div>
+          <div class="info-card">
+            <h3>Certifications</h3>
+            <ul class="plain-list">
+              <li>Engineer AI Agents with Agent Development Kit (ADK) — Google Cloud</li>
+              <li>Create Your First Gemini Enterprise Application — Google Cloud</li>
+              <li>SQL (Advanced) — HackerRank</li>
+              <li>API Security Fundamentals — APIsec University</li>
+              <li>Problem Solving (Intermediate) — HackerRank</li>
+              <li>Data Processing and Visualization — Accenture (via SSC NASSCOM)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="method method-post">POST</span>
+          <h2>/contact</h2>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <p class="prose-lead">
+              I am an immediate joiner, open to backend roles in Kerala, Coimbatore and nearby
+              Tamil Nadu districts, Bengaluru, or remote. The fastest way to reach me is email.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                <a href="mailto:varungopal309@gmail.com">varungopal309@gmail.com</a>
+                <button class="copy-btn" id="copyEmailBtn" type="button">Copy</button>
+              </li>
+              <li>
+                <span>Phone</span>
+                <a href="tel:+918891108309">+91 88911 08309</a>
+              </li>
+              <li>
+                <span>LinkedIn</span>
+                <a href="https://www.linkedin.com/in/varun---gopal/" target="_blank" rel="noopener">linkedin.com/in/varun---gopal ↗</a>
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a href="https://github.com/varungopal37" target="_blank" rel="noopener">github.com/varungopal37 ↗</a>
+              </li>
+              <li>
+                <span>Résumé</span>
+                <a href="assets/resume/Varun_Gopal_Resume.pdf" download>Download PDF ↓</a>
+              </li>
+            </ul>
+            <p class="copy-feedback" id="copyFeedback" role="status" aria-live="polite"></p>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <h3>Send a message</h3>
+            <p class="form-note">This opens your email app with the message pre-filled — no data is stored on this site.</p>
+            <label>
+              Your name
+              <input type="text" name="name" id="cfName" autocomplete="name" required />
+            </label>
+            <label>
+              Your email
+              <input type="email" name="email" id="cfEmail" autocomplete="email" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" id="cfMessage" rows="5" required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Open in email app</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Varun Gopal · Ernakulam, Kerala</p>
+      <p class="footer-note">Built as a static site — plain HTML, CSS and JavaScript. Deployed on Netlify.</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+(function () {
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  var navToggle = document.getElementById('navToggle');
+  var siteNav = document.getElementById('siteNav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var open = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    siteNav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        siteNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Active nav link on scroll
+  var sections = ['profile', 'skills', 'experience', 'projects', 'credentials', 'contact'];
+  var navLinks = {};
+  document.querySelectorAll('.site-nav a').forEach(function (a) {
+    var href = a.getAttribute('href');
+    if (href && href.charAt(0) === '#') navLinks[href.slice(1)] = a;
+  });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && navLinks[entry.target.id]) {
+          Object.values(navLinks).forEach(function (a) { a.classList.remove('active'); });
+          navLinks[entry.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  }
+
+  function copyText(text, feedbackMsg) {
+    var feedback = document.getElementById('copyFeedback');
+    function done() {
+      if (feedback) {
+        feedback.textContent = feedbackMsg;
+        setTimeout(function () { feedback.textContent = ''; }, 2500);
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      done();
+    }
+  }
+
+  var copyEmailBtn = document.getElementById('copyEmailBtn');
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', function () {
+      copyText('varungopal309@gmail.com', 'Email copied.');
+    });
+  }
+
+  var copyProfileBtn = document.getElementById('copyProfileBtn');
+  var profileJson = document.getElementById('profileJson');
+  if (copyProfileBtn && profileJson) {
+    copyProfileBtn.addEventListener('click', function () {
+      copyText(profileJson.innerText.trim(), 'Profile JSON copied.');
+    });
+  }
+
+  // Skills filter
+  var filterInput = document.getElementById('skillFilter');
+  var skillsGrid = document.getElementById('skillsGrid');
+  var skillsEmpty = document.getElementById('skillsEmpty');
+  if (filterInput && skillsGrid) {
+    filterInput.addEventListener('input', function () {
+      var q = filterInput.value.trim().toLowerCase();
+      var visible = 0;
+      skillsGrid.querySelectorAll('.skill-card').forEach(function (card) {
+        var hay = (card.getAttribute('data-skills') || '') + ' ' + card.textContent.toLowerCase();
+        var show = !q || hay.indexOf(q) !== -1;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (skillsEmpty) skillsEmpty.hidden = visible !== 0;
+    });
+  }
+
+  // Contact form -> mailto (no backend, no data stored)
+  var form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('cfName').value.trim();
+      var email = document.getElementById('cfEmail').value.trim();
+      var message = document.getElementById('cfMessage').value.trim();
+      var subject = encodeURIComponent('Portfolio enquiry from ' + name);
+      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      window.location.href = 'mailto:varungopal309@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
